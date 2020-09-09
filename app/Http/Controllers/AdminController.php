@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function menu(){
-        return view('admin.menu-editor');
+        $categories = Category::orderBy('display_order')->get();
+        return view('admin.menu-editor', [
+            'categories' => $categories,
+        ]);
     }
 }
