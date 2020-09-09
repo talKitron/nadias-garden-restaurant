@@ -29,5 +29,8 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
 
+        Gate::define('edit-menu', function($user){
+            return $user->is_admin;
+        });
     }
 }
