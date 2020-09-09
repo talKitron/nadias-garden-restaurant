@@ -33,6 +33,8 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li class="separator"></li>
+                    <li><a href="/categories">Categories</a></li>
+                    <li class="separator"></li>
                     <li><a href="#">About</a></li>
                     <li class="separator"></li>
                     <li><a href="/menu">Menu</a></li>

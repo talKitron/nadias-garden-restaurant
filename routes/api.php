@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/categories/upsert', 'CategoryController@upsert');
+Route::delete('/categories/{category}', 'CategoryController@destroy');
+
+// Route::middleware('auth:api')->group( function () {
+//     Route::resource('products', 'API\ProductController');
+// });
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

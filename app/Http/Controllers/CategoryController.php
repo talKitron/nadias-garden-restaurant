@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,28 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('manage', 'App\Category');
+        $categories = Category::orderBy('display_order')->get();
+        return view('admin.categories.index',[
+            'categories' => $categories,
+        ]);
+    }
+
+    public function upsert(Request $request){
+        $this->authorize('manage', 'App\Category');
+        // return response(['message' => 'success'], 200);
+        $categories = $request->post('categories');
+        foreach($categories as $cat){
+            if($cat['id']){
+                $cat['created_at'] = $cat['created_at']?Carbon::parse($cat['created_at'])->format('Y-m-d H:i:s'):$cat['created_at'];
+                $cat['updated_at'] = $cat['updated_at']?Carbon::parse($cat['updated_at'])->format('Y-m-d H:i:s'):$cat['created_at'];
+                Category::where('id', $cat['id'])->update($cat);
+            } else {
+                Category::create($cat);
+            }
+        }
+        return ['message' => 'success', 'categories' => Category::all()];
+        // return response(['message' => 'success'], 200);
     }
 
     /**
@@ -80,6 +102,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $this->authorize('delete', $category);
+        $category->delete();
+        return ['success' => true];
     }
 }
