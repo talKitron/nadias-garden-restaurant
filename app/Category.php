@@ -10,6 +10,6 @@ class Category extends Model
     protected $guarded = [];
 
     public function menuItems(){
-        return $this->hasMany(MenuItem::class);//'App\MenuItem'
+        return $this->hasMany('App\MenuItem');//'App\MenuItem'
     }
 }
