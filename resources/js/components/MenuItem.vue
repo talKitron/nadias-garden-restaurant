@@ -37,7 +37,8 @@
         },
         methods: {
             save() {
-
+                axios.post('/api/menu-items/add', this.item)
+                    .then(res => console.log(res));
             }
         }
     }
