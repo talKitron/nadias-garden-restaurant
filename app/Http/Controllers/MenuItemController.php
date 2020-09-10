@@ -42,7 +42,7 @@ class MenuItemController extends Controller
         $request->validate([
             'name' => 'required|max:128',
             'description' => 'required|max:512',
-            'price' => 'rquired|numeric|min:0',
+            'price' => 'required|numeric|min:0',
             'category_id' => 'required|numeric',
             'image' => 'required'
         ]);

@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/categories/upsert', 'CategoryController@upsert');
+
 Route::delete('/categories/{category}', 'CategoryController@destroy');
 
 Route::post('/menu-items/add', 'MenuItemController@store');
 
-// Route::middleware('auth:api')->group( function () {
-//     Route::resource('products', 'API\ProductController');
-// });
+Route::post('/add-image', function(Request $request){
+    $file = $request->file('file');
+    $dir = 'public/images';
+    $path = $file->store($dir);
+    return str_replace("$dir/", "", $path);
+});
 
+Route::get('/categories/{category}/items', 'CategoryController@items');
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
