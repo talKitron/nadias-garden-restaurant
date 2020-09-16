@@ -10,14 +10,6 @@ ver=1.0.0);body {
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: #218944;
-}
-
 .container {
   max-width: 780px;
   margin: 0 auto;
@@ -254,6 +246,10 @@ input[type=number] {
   width: 40px;
 }
 
+a {
+  text-decoration: none;
+}
+
 a.add {
   display: block;
   text-decoration: underline;
@@ -268,6 +264,18 @@ a.remove {
   text-decoration: underline;
   cursor: pointer;
   color: red;
+}
+
+a.change {
+  font-weight: bold;
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: orange;
+}
+
+a:hover {
+  color: #218944;
 }
 
 form {

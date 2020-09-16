@@ -17,16 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 // Route::post('/register', 'api\Auth\AuthController@register');
 // Route::post('/login', 'api\Auth\AuthController@login');
-
-Route::post('/categories/upsert', 'CategoryController@upsert');
-Route::delete('/categories/{category}', 'CategoryController@destroy');
-Route::get('/categories/{category}/items', 'CategoryController@items');
-
-Route::post('/menu-items/add', 'MenuItemController@store');
-Route::get('/menu-items/{menuItem}', function(MenuItem $menuItem){
-    return $menuItem;
-});
-Route::post('/menu-items/{menuItem}', 'MenuItemController@update');
+Route::group([
+    'middleware' => 'auth:api'
+  ], function() {
+    Route::post('/categories/upsert', 'CategoryController@upsert');
+    Route::delete('/categories/{category}', 'CategoryController@destroy');
+    Route::get('/categories/{category}/items', 'CategoryController@items');
+    
+    Route::post('/menu-items/add', 'MenuItemController@store');
+    Route::delete('/menu-items/{menuItem}', 'MenuItemController@destroy');
+    Route::get('/menu-items/{menuItem}', function(MenuItem $menuItem){
+        return $menuItem;
+    });
+    Route::post('/menu-items/{menuItem}', 'MenuItemController@update');
+  });
 
 Route::post('/add-image', function(Request $request){
     $file = $request->file('file');
@@ -35,6 +39,19 @@ Route::post('/add-image', function(Request $request){
     return str_replace("$dir/", "", $path);
 });
 
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('/login', 'api\AuthController@login');
+    Route::post('/register', 'api\AuthController@register');
+  
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('/logout', 'api\AuthController@logout');
+        Route::get('/user', 'api\AuthController@user');
+    });
+});
 
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
