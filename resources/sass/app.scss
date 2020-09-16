@@ -111,35 +111,82 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+
+    article {
+      padding: 10px 40px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 0;
+
+      a {
+        font-family: 'Old Standard TT', serif;
+        font-weight: 400;
+        font-size: 24px;
+        margin-top: 0;
+        color: #555;    
+      }
+    }
+
+    img {
+      padding: 7px;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      max-width: calc(100% - 16px);
+      display: block;
+    }
+
+    img:hover {
+      background-color: #ddd;
+    }
   }
-  
-  .menu-categories article {
-    padding: 10px 40px;
-    text-align: center;
-  }
-  
-  .menu-categories h2 {
-    margin-top: 0;
-  }
-  
-  .menu-categories h2 a {
+
+  .menu-header {
+    color: #545454;
     font-family: 'Old Standard TT', serif;
     font-weight: 400;
-    font-size: 24px;
-    margin-top: 0;
-    color: #555;    
+    font-size: 36px;
+    text-transform: none;
+  }
+
+  .menu {
+    padding-left: 80px;
   }
   
-  .menu-categories img {
-    padding: 7px;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    max-width: calc(100% - 16px);
-    display: block;
+  .category {
+    clear: both;
   }
   
-  .menu-categories img:hover {
-    background-color: #ddd;
+  .menu-item {
+    clear: both;
+
+    img {
+      float: left;
+      width: 30%;
+      margin-bottom: 20px;
+    }
+
+    div:first-of-type {  
+      padding-left: 20px;
+      float: left;
+      width: 40%;
+      text-align: left;
+    }
+
+    div {
+      text-align: right;
+      width: 22%;  
+      float: right;
+    }
+  }
+  
+  .category-name {
+    color: #545454;
+    font-family: 'Old Standard TT', serif;
+    font-weight: 400;
+    line-height: 1.2;
+    padding-top: 20px;
   }
   
   .social {    
@@ -227,7 +274,25 @@ body {
     cursor: pointer;
     color: red;
   }
+
+  form {
+    padding-top: 30px;
+  }
   
+  select {
+    height: 40px;
+    border-radius: 5px;
+  }
+  
+  .menu-item-list {
+    padding-top: 30px;
+  }
+  
+  textarea {
+    width: 255px;
+    height: 100px;
+  }
+
   @media only screen and (max-width: 770px) {
     nav ul {
         flex-direction: column;
@@ -263,9 +328,33 @@ body {
   
   @media only screen and (max-width: 520px) {
     .menu-categories h2 {        
-        display: none;
-    }
-    .menu-categories img {
-        padding: 3px;     
-    }
+      display: none;
+  }
+  .menu-categories img {
+      padding: 3px;     
+  }
+
+  .menu {
+    padding-left: 0;
+  }
+
+  .menu-item img {
+    max-width: 100%;
+  }
+
+  .menu-item div {
+    font-size: 14px;
+  }
+
+  .menu-item div:first-of-type {
+    width: 50%;
+  }
+
+  .menu-item div {
+    width: 10%;
+  }
+
+  .menu-item p {
+    font-size: 12px;
+  }
   }

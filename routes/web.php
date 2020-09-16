@@ -27,4 +27,5 @@ Route::get('/categories', 'CategoryController@index');
 Route::get('/menu-editor/{any?}', 'AdminController@menu')
     ->middleware('can:edit-menu')
     ->where('any', '.*');
-//->middleware('verified')
+
+Route::get('/menu', 'HomeController@menu');
