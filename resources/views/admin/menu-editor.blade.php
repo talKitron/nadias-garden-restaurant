@@ -3,5 +3,5 @@
 @section('title', '- Menu Editor')
 
 @section('content')
-    <menu-editor :categories='{{ $categories }}'></menu-editor>
+    <menu-editor :categories='{{ $categories }}' :items='{{ $items }}'></menu-editor>
 @endsection

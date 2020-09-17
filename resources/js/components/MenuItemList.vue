@@ -28,6 +28,8 @@
             categories: 'categories'
         }),
         created() {
+            let items = this.$store.state.items.find(item => item.category_id === 1);
+            console.log(items)
             this.fetchItems();
         },
         methods: {

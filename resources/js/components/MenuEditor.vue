@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Menu Editor</h1>
+        <h1>Restaurant Menu Editor</h1>
         <router-link :to="{name: 'categories'}">Categories</router-link>
         <router-link :to="{name: 'items'}">Items</router-link>
         <router-link :to="{name: 'add-item'}">Add Item</router-link>
@@ -18,9 +18,10 @@
 
     export default {
         store,
-        props: ['categories'],
+        props: ['categories', 'items'],
         created() {
             this.$store.commit('SET_CATEGORIES', _.cloneDeep(this.categories));
+            this.$store.commit('SET_ITEMS', _.cloneDeep(this.items));
         },
         router: new VueRouter({
             mode: 'history',
@@ -61,12 +62,12 @@
 </script>
 
 <style scoped>
-    a{
+    a {
         border: solid 1px black;
         padding: 10px;
         margin: 0;
     }
-    .router-link-active{
+    .router-link-active {
         font-weight: bold;
         border-bottom: none;
     }

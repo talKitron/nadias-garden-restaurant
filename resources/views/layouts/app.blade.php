@@ -33,8 +33,10 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li class="separator"></li>
-                    <li><a href="/categories">Categories</a></li>
-                    <li class="separator"></li>
+                    @if(Auth::user() && Auth::user()->is_admin)
+                        <li><a href="/menu-editor">Menu Editor</a></li>
+                        <li class="separator"></li>
+                    @endif
                     <li><a href="#">About</a></li>
                     <li class="separator"></li>
                     <li><a href="/menu">Menu</a></li>
