@@ -13,7 +13,7 @@
 <div class="menu-categories">
     @foreach ($categories as $cat)
     <article>
-        <a href="/menu#{{ Str::slug($cat->name) }}"><img src="/images/{{ $cat->image }}"></a>
+        <a href="/menu#{{ Str::slug($cat->name) }}"><img src="/storage/images/{{ $cat->image }}" width="100px"></a>
         <h2><a href="/menu#{{ Str::slug($cat->name) }}">{{ $cat->name }}</a></h2>
     </article>
     @endforeach
