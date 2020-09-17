@@ -70,7 +70,10 @@ class MenuItemController extends Controller
      */
     public function update(MenuItemPost $request, MenuItem $menuItem)
     {
-        $menuItem->update($request->validated());
+        $this->authorize('manage', $menuItem);
+        if ($menuItem->update($request->validated())) {
+            return response(['success' => true], 200);
+        }
     }
 
     /**
@@ -81,6 +84,9 @@ class MenuItemController extends Controller
      */
     public function destroy(MenuItem $menuItem)
     {
-        //
+        $this->authorize('manage', $menuItem);
+        if ($menuItem->delete()) {
+            return response(['success' => true], 200);
+        }
     }
 }

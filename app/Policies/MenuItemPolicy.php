@@ -2,29 +2,16 @@
 
 namespace App\Policies;
 
-use App\Category;
+use App\MenuItem;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CategoryPolicy
+class MenuItemPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine before and regardless any permission.
-     * 
-     * @param  \App\User  $user
-     * @param  \App\User  $ability
-     */
-    public function before($user, $ability){
-        if($user->is_admin){
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Determine whether the user can manage categories.
+     * Determine whether the user can manage menu-items.
      *
      * @param  \App\User  $user
      * @return mixed
@@ -49,10 +36,10 @@ class CategoryPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Category  $category
+     * @param  \App\MenuItem  $menuItem
      * @return mixed
      */
-    public function view(User $user, Category $category)
+    public function view(User $user, MenuItem $menuItem)
     {
         //
     }
@@ -72,10 +59,10 @@ class CategoryPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Category  $category
+     * @param  \App\MenuItem  $menuItem
      * @return mixed
      */
-    public function update(User $user, Category $category)
+    public function update(User $user, MenuItem $menuItem)
     {
         //
     }
@@ -84,10 +71,10 @@ class CategoryPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Category  $category
+     * @param  \App\MenuItem  $menuItem
      * @return mixed
      */
-    public function delete(User $user, Category $category)
+    public function delete(User $user, MenuItem $menuItem)
     {
         //
     }
@@ -96,10 +83,10 @@ class CategoryPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Category  $category
+     * @param  \App\MenuItem  $menuItem
      * @return mixed
      */
-    public function restore(User $user, Category $category)
+    public function restore(User $user, MenuItem $menuItem)
     {
         //
     }
@@ -108,10 +95,10 @@ class CategoryPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Category  $category
+     * @param  \App\MenuItem  $menuItem
      * @return mixed
      */
-    public function forceDelete(User $user, Category $category)
+    public function forceDelete(User $user, MenuItem $menuItem)
     {
         //
     }

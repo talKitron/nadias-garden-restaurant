@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Carbon\Carbon;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -22,12 +24,16 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function upsert(Request $request){
+    public function upsert(Request $request) {
         $this->authorize('manage', 'App\Category');
-        // return response(['message' => 'success'], 200);
         $categories = $request->post('categories');
+        $validator = $request->validate([
+            'categories.*.name' => 'required|distinct|max:255',
+            'categories.*.image' => 'required|string',
+            'categories.*.display_order' => 'required|integer|min:1'
+        ]);
         foreach($categories as $cat){
-            if($cat['id']){
+            if($cat['id']) {
                 $cat['created_at'] = $cat['created_at']?Carbon::parse($cat['created_at'])->format('Y-m-d H:i:s'):$cat['created_at'];
                 $cat['updated_at'] = $cat['updated_at']?Carbon::parse($cat['updated_at'])->format('Y-m-d H:i:s'):$cat['created_at'];
                 Category::where('id', $cat['id'])->update($cat);
@@ -103,7 +109,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $this->authorize('delete', $category);
+        $this->authorize('manage', $category);
         $category->delete();
         return ['success' => true];
     }
