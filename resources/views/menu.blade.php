@@ -20,13 +20,15 @@
             <hr>
             @foreach($category->menuItems as $item)
             <div class="menu-item">
-                <img src="/storage/images/{{$item->image}}">
+                @foreach($item->images as $img)
+                <img src="/storage/images/{{ $img->image }}" width="200">
+                @endforeach
                 <div>
-                    <strong>{{$item->name}}</strong>
-                    <p>{{$item->description}}</p>
+                    <strong>{{ $item->name }}</strong>
+                    <p>{{ $item->description }}</p>
                 </div>
                 <div class="price">
-                    {{round($item->price, 2)}}
+                    {{ round($item->price, 2) }}
                 </div>
             </div>
             @endforeach
