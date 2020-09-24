@@ -28,7 +28,8 @@ class MenuItemPost extends FormRequest
             'description' => 'required|max:512',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|numeric',
-            'image' => 'required'
+            // 'images' => 'required|array',
+            // 'images.*' => 'required|string'
         ];
     }
 }
