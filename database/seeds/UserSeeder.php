@@ -19,11 +19,17 @@ class UserSeeder extends Seeder
         //     $user->posts()->save(factory(App\Post::class)->make());
         // });
 
-        DB::table('categories')->insert([
+        DB::table('users')->insert([
+            // [
+            //     'name' => Str::random(10),
+            //     'email' => Str::random(10).'@gmail.com',
+            //     'password' => Hash::make('password'),
+            //     'is_admin' => 1,
+            // ],
             [
-                'name' => Str::random(10),
-                'email' => Str::random(10).'@gmail.com',
-                'password' => Hash::make('password'),
+                'name' => 'Test User',
+                'email' => 'testuser@dev.nadias',
+                'password' => Hash::make('1234567!'),
                 'is_admin' => 1,
             ],
         ]);

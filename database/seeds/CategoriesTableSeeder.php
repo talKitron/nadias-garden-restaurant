@@ -16,28 +16,28 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'name' => 'Starters',
-                'image' => 'mushrooms.jpg',
+                'image' => 'dummy/mushrooms.jpg',
                 'display_order' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Salads',
-                'image' => 'salad.jpg',
+                'image' => 'dummy/salad.jpg',
                 'display_order' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Entrees',
-                'image' => 'burger.jpg',
+                'image' => 'dummy/burger.jpg',
                 'display_order' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Desserts',
-                'image' => 'brownie.jpg',
+                'image' => 'dummy/brownie.jpg',
                 'display_order' => 4,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
