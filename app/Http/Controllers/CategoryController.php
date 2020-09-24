@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function upsert(Request $request) {
         $this->authorize('manage', 'App\Category');
         $categories = $request->post('categories');
-        $validator = $request->validate([
+        $request->validate([
             'categories.*.name' => 'required|distinct|max:255',
             'categories.*.image' => 'required|string',
             'categories.*.display_order' => 'required|integer|min:1'
@@ -41,7 +41,7 @@ class CategoryController extends Controller
                 Category::create($cat);
             }
         }
-        return ['message' => 'success', 'categories' => Category::all()];
+        return response(['success' => true, 'categories' => Category::all()] ,200);
     }
 
     /**
@@ -110,7 +110,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $this->authorize('manage', $category);
+        $this->deleteImageFromDisk('public', $category->image);
         $category->delete();
-        return ['success' => true];
+        return response(['success' => true], 200);
     }
 }
